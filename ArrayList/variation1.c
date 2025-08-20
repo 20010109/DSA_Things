@@ -92,14 +92,16 @@ int locate (List L, int data){
 }
 
 List insertSorted(List L, int data){
-    for(int i = 1; i < size; i++){
-        int key = data;
-        int j = i-1;
-        while(j >= 0 && L.elem[j] > key){
-            L.elem[j+1] = L.elem[j];
-            j = j - 1;
+    int temp = 0, max;
+    for(int i = 0; i < size; i++){
+        if(L.elem[i] > data){
+            temp = L.elem[i];
+            L.elem[i] = data;
+            for(int j = i; j < size-1; j++){
+                
+            }
         }
-        L.elem[j+1] = key;
+        
     }
     return L;
 }
