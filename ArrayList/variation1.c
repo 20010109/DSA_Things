@@ -28,23 +28,43 @@ int main(){
     L = insertPos(L, 5, 0);
     L = insertPos(L, 10, 1);
     L = insertPos(L, 15, 2);
+    L = insertPos(L, 30, 1);
+    L = insertPos(L, 100, 9);
     display(L);
 
     printf("\nAfter Deletion\n");
-    L = deletePos(L, 1);
+    L = deletePos(L, 2);
+    // L = deletePos(L, 1);
+    // L = deletePos(L, 0);
+    // L = deletePos(L, 0);
     display(L);
 
     printf("\nLocate number\n");
     int found = locate(L, 20);
-    if(found != -1){
-        printf("Data found on index %d\n", found);
-    } else {
-        printf("Data not found!\n");
-    }
+    (found != -1)? printf("Data found on index %d\n", found): printf("Data not found!\n");
+    
     display(L);
 
     printf("\nInsert Sorted\n");
     L = insertSorted(L, 30);
+    L = insertSorted(L, 20);
+    L = insertSorted(L, 1);
+    L = insertSorted(L, 2);
+    L = insertSorted(L, 3);
+    L = insertSorted(L, 100);
+    L = insertSorted(L, 5);
+    L = insertSorted(L, 6);
+    L = insertSorted(L, 7);
+    // test for over count
+    // L = insertSorted(L, 8);
+    // L = insertSorted(L, 9);
+    // L = insertSorted(L, 10);
+    // L = insertSorted(L, 11);
+    display(L);
+    
+    printf("\nDeleting!\n");
+    
+    L = deletePos(L, 2);
     display(L);
 }
 
@@ -66,18 +86,37 @@ List initialize (){
 }
 
 List insertPos(List L, int data, int position){
-    if(L.count < size){
-        if(L.elem[position] == -1){
-            L.count++;
+    int count = L.count;
+    if(position <= count && count < size){
+        if(L.elem[position] != -1){
+            for(int i = size; i > position; i--){
+                L.elem[i] = L.elem[i-1];
+            }
         }
         L.elem[position] = data;
+        L.count = count + 1;
+    } else {
+        printf("Cannot insert %d at position %d\n", data, position);
     }
     return L;
 }
 
 List deletePos(List L, int position){
-    L.elem[position] = -1;
-    L.count--;
+    int temp, count = L.count;
+    if(L.count != 0){
+        L.elem[position] = -1;
+        for(int i = position; i < size-1; i++){
+            // if(L.elem[i] == -1){
+            //     break;
+            // }
+            temp = L.elem[i+1];
+            L.elem[i+1] = L.elem[i];
+            L.elem[i] = temp;
+        }
+        L.count = count - 1;
+    } else {
+        printf("List is empty, cannot delete from position %d\n", position);
+    }
     return L;
 }
 
@@ -92,16 +131,17 @@ int locate (List L, int data){
 }
 
 List insertSorted(List L, int data){
-    int temp = 0, max;
-    for(int i = 0; i < size; i++){
-        if(L.elem[i] > data){
-            temp = L.elem[i];
-            L.elem[i] = data;
-            for(int j = i; j < size-1; j++){
-                
-            }
+    int count = L.count;
+    if(count < size){
+        int i = L.count - 1;
+        while(i >= 0 && L.elem[i] >= data){
+          L.elem[i + 1] = L.elem[i];
+          i--;
         }
-        
+        L.elem[i + 1] = data;
+        L.count = count + 1;
+    } else {
+        printf("List is full, can not insert %d!\n", data);
     }
     return L;
 }
