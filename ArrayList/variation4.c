@@ -34,8 +34,8 @@ int main(){
     insertPos(&L, 30, 0);
     insertPos(&L, 20, 0);
     insertPos(&L, 10, 0);
-    insertSorted(&L, 120);
-    insertSorted(&L, 110);
+    // insertSorted(&L, 120); // test insertSorted
+    // insertSorted(&L, 110);
     
     // deletePos(&L, 0);
     // deletePos(&L, 9);
