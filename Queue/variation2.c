@@ -1,4 +1,4 @@
-//Queue is a static array with count, front, and rear
+//Queue is a static array with front, rear, and a sacrificial space.
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,11 +8,6 @@
 
 typedef struct {
     int items[MAX];
-    int count;
-} List;
-
-typedef struct {
-    List list;
     int front;
     int rear;
 } Queue;
@@ -87,26 +82,19 @@ void displayMenu(){
 
 Queue* initialize(){
     Queue* q = malloc(sizeof(Queue));
-    q->list.count = 0;
-    q->front = -1;
-    q->rear = -1;
+    q->front = 1;
+    q->rear = 0;
     return q;
 }
 
-bool isFull(Queue* q){return q->list.count == MAX;}
+bool isFull(Queue* q){return q->front == (q->rear + 2) % MAX;}
 
-bool isEmpty(Queue* q){return q->list.count == 0;}
+bool isEmpty(Queue* q){return q->front == (q->rear + 1) % MAX;}
 
 void enqueue(Queue* q, int value){
     if(!isFull(q)){
-        if(isEmpty(q)){
-            q->front = 0;
-            q->rear = 0;
-        } else {
-            q->rear = (q->rear + 1) % MAX;
-        }
-        q->list.items[q->rear] = value;
-        q->list.count++;
+        q->rear = (q->rear + 1) % MAX;
+        q->items[q->rear] = value;
         printf("%d added to the queue!\n", value);
     } else {
         printf("Unable to enqueue, Queue is full!\n");
@@ -116,13 +104,7 @@ void enqueue(Queue* q, int value){
 int dequeue(Queue* q){
     if(!isEmpty(q)){
         int removedElem = front(q);
-        if(q->list.count == 1){
-            q->front = 0;
-            q->rear = 0;
-        } else {
-            q->front = (q->front + 1) % MAX;
-        }
-        q->list.count--;
+        q->front = (q->front + 1) % MAX;
         return removedElem;
     } else {
         printf("Unable to dequeue, Queue is empty!\n");
@@ -131,16 +113,15 @@ int dequeue(Queue* q){
 
 int front(Queue* q){
     if(!isEmpty(q)){
-        return q->list.items[q->front];
+        return q->items[q->front];
     }
 }
 
 void display(Queue* q){
     printf("Displaying Queue Details:\n");
     if(!isEmpty(q)){
-        for(int i = 0, trav = q->front; i < q->list.count; i++){
-            printf("%d ", q->list.items[trav]);
-            trav = (trav + 1) % MAX;
+        for(int trav = q->front; trav != ((q->rear + 1) % MAX); trav = (trav + 1) % MAX){
+            printf("%d ", q->items[trav]);
         }
     } else {
         printf("Queue is empty!\n");
