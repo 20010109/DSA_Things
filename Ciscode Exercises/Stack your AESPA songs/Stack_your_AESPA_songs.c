@@ -76,7 +76,7 @@ int main(){
     displayAlbum(aespa);
 	// Peek the top song and store it in the topSong variable, then print the top song
     topSong = peekSong(&aespa);
-    printf("Peek (Top Song): %s (%d)\n", topSong.songTitle, topSong.releaseYear);
+    printf("Peek (Top Song): %s (%d)\n\n", topSong.songTitle, topSong.releaseYear);
 	// Implement your code here...
 	
 	return 0;
@@ -126,8 +126,7 @@ void populateAlbum(Album *ae){
 	// Implement your code here...
 
     ae->artistInfo = aespaInfo;
-    int songListSize = 15;
-    for(int i = 0; i < songListSize; i++){
+    for(int i = 0; library.List[i].releaseYear != 0; i++){
         pushSong(ae, library.List[i]);
     }
 	
@@ -207,4 +206,4 @@ void displayAlbum(Album ae){
         printf("%-5d %-20s %-10d\n", track++, trav->songInfo.songTitle, trav->songInfo.releaseYear);
     }
     printf("===============================\n\n");
-}
+}*
