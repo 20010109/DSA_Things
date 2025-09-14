@@ -47,12 +47,11 @@ bool isValidParentheses (char parentheses[]) {
         }
         if( (s.elem[s.top] == '(' && parentheses[i] == ')') ||
             (s.elem[s.top] == '[' && parentheses[i] == ']') ||
-            (s.elem[s.top] == '{' && parentheses[i] == '}')
-        ){
+            (s.elem[s.top] == '{' && parentheses[i] == '}')   ) {
             pop(&s);
         }
     }
-    return s.top == -1;
+    return isEmpty();
 }
 
 
