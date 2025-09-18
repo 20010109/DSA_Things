@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
-#define MAX 4
+#define MAX 5
 
 typedef struct{
     int elem;
@@ -21,6 +21,7 @@ int allocSpace(VHeap *V);
 void deallocSpace(VHeap *V, int index);
 void insertFirst(int *L, VHeap *V, int elem);
 void insertLast(int* L, VHeap *V, int elem);
+void insertPos(int* L, VHeap* V, int elem);
 void insertSorted(int *L, VHeap *V, int elem);
 void delete(int *L, VHeap *V, int elem);
 void deleteAllOccurrence(int *L, VHeap *V, int elem);
@@ -31,12 +32,12 @@ int main(){
     VHeap V;
     initialize(&V);
     
+    insertLast(&L, &V, 10);
     insertLast(&L, &V, 20);
-    insertLast(&L, &V, 20);
-    insertLast(&L, &V, 20);
-    insertLast(&L, &V, 20);
+    insertLast(&L, &V, 30);
+    insertPos(&L, &V, 10);
     
-    deleteAllOccurrence(&L, &V, 20);
+    deleteAllOccurrence(&L, &V, 10);
     
     
     //delete(&L, &V, 40);
@@ -101,6 +102,25 @@ void insertSorted(int *L, VHeap *V, int elem){
     }
 }
 
+void insertPos(int* L, VHeap* V, int elem){
+    int index;
+    printf("Enter index to insert: ");
+    scanf("%d", &index);
+    if(index == 0){
+        insertFirst(L, V, elem);
+    } else if(index == -1){
+        insertLast(L, V, elem);
+    } else {
+        int newCell = allocSpace(V);    
+        int *trav = L;
+        V->H[newCell].elem = elem;
+        for(int i = 0; *trav != -1 && i < index-1; trav = &V->H[*trav].next, i++){
+        }
+        V->H[newCell].next = *trav;
+        *trav = newCell;
+    }
+}
+
 void delete(int *L, VHeap *V, int elem){
     int *trav, temp;
     trav = L;
@@ -120,6 +140,7 @@ void deleteAllOccurrence(int *L, VHeap *V, int elem){
         if(V->H[*trav].elem == elem){
             delete(L, V, elem);
         }
+        trav = &V->H[*trav].next;
     }
 }
 
