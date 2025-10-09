@@ -95,15 +95,15 @@ void display(VHeap V){
     printf("Avail = %d\n", V.avail);
     //primary list
     printf("Primary List:\n");
-    printf("%5s|%-5s\n", "code", "next");
+    printf("%5s|%-5s|%-5s\n", "index", "code", "next");
     for(int i = 0; i < MAX/2; i++){
-        printf("%5s|%-5d \n", V.H[i].code, V.H[i].next);
+        printf("%5d|%-5s|%-5d \n", i, V.H[i].code, V.H[i].next);
     }
     //secondary list
     printf("Secondary List:\n");
-    printf("%5s|%-5s\n", "code", "next");
+    printf("%5s|%-5s|%-5s\n", "index", "code", "next");
     for(int i = MAX/2; i < MAX; i++){
-        printf("%5s|%-5d \n", V.H[i].code, V.H[i].next);
+        printf("%5d|%-5s|%-5d \n", i, V.H[i].code, V.H[i].next);
     }
 }
 
