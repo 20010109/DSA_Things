@@ -57,20 +57,22 @@ void deleteMember(VirtualHeap *VH,Song song){
         if(*trav != -1){
             VH->H[key].elem = VH->H[*trav].elem;
             VH->H[key].next = VH->H[*trav].next;
-            //deallocSpace(VH, *trav);
+            deallocSpace(VH, *trav);
         }
     } else {
         int *trav = &VH->H[key].next;
-        while(*trav != -1 && !strcmp(song.songName, VH->H[*trav].elem.songName) == 0){
+        while(*trav != -1 && strcmp(song.songName, VH->H[*trav].elem.songName) != 0){
             trav = &VH->H[*trav].next;
         }
         if(*trav != -1){
             //printf("DELETE");
-            strcpy(VH->H[*trav].elem.songName, "");
-            strcpy(VH->H[*trav].elem.singer, "");
-            strcpy(VH->H[*trav].elem.genre, "");
-            //deallocSpace(VH, *trav);
-            *trav = VH->H[*trav].next;
+            int temp = *trav;
+            strcpy(VH->H[temp].elem.songName, "");
+            strcpy(VH->H[temp].elem.singer, "");
+            strcpy(VH->H[temp].elem.genre, "");
+            *trav = VH->H[temp].next;
+
+            deallocSpace(VH, temp);
         }
     }
 }
