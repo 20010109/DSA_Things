@@ -22,6 +22,7 @@ DSA_THINGS/
 │   ├── Linked List/    # Linked list variations
 │   ├── LL Queues/      # Linked list based queues
 │   ├── LL Stack/       # Linked list based stacks
+│   ├── Priority Queue/ # Priority Queue implementation
 │   ├── Queue/          # Queue data structures
 │   └── Stack/          # Stack data structures
 └── README.md
