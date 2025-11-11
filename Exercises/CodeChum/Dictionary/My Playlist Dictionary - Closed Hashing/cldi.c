@@ -27,22 +27,23 @@ void deallocSpace(VirtualHeap *VH, int index){//USELESS FUNCTION
 
 void insert(VirtualHeap *VH,Song song){
     int key = hash(song.genre);
-    if(strcmp(VH->H[key].elem.songName, "") == 0){
+    if(strcmp(VH->H[key].elem.songName, "") == 0){// if empty
         VH->H[key].elem = song;
     } else {
         int newCell = allocSpace(VH);
-        VH->H[newCell].elem = song;
-        VH->H[newCell].next = -1;
-        if(VH->H[key].next == -1){
-            VH->H[key].next = newCell;
-        } else {
-            int *trav = &VH->H[key].next;
-            while(*trav != -1){
-                trav = &VH->H[*trav].next;
+        if(newCell != -1){
+            VH->H[newCell].elem = song;
+            VH->H[newCell].next = -1;
+            if(VH->H[key].next == -1){
+                VH->H[key].next = newCell;
+            } else {
+                int *trav = &VH->H[key].next;
+                while(*trav != -1){
+                    trav = &VH->H[*trav].next;
+                }
+                *trav = newCell;
             }
-            *trav = newCell;
-        }
-        
+        } 
     }
 }
 

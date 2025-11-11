@@ -9,6 +9,8 @@ int getAnswer(CompWord profile, int index);
 void printProfile(CompWord profile, int numQuestions);
 int countYes(CompWord profile, int numQuestions);
 CompWord combineProfiles(CompWord p1, CompWord p2);
+CompWord intersectProfiles(CompWord p1, CompWord p2);
+CompWord differenceProfiles(CompWord p1, CompWord p2);
 
 int main() {
     CompWord A = 0, B = 0;
@@ -42,7 +44,7 @@ int main() {
     printf("\nA Yes count: %d\n", countYes(A, 8));
     printf("B Yes count: %d\n", countYes(B, 8));
 
-    CompWord C = combineProfiles(A, B);
+    CompWord C = differenceProfiles(A, B);
     printf("\nCombined Profile: ");
     printProfile(C, 8);
 
@@ -80,5 +82,13 @@ int countYes(CompWord profile, int numQuestions){
 }
 CompWord combineProfiles(CompWord p1, CompWord p2){
     return p1 | p2;
+}
+
+CompWord intersectProfiles(CompWord p1, CompWord p2){
+    return p1 & p2;
+}
+
+CompWord differenceProfiles(CompWord p1, CompWord p2){
+    return p1 & ~p2;
 }
 
