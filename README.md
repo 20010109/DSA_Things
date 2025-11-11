@@ -9,12 +9,12 @@ This repository is a comprehensive collection of Data Structures and Algorithms 
 ## 📁 Project Structure
 ```plaintext
 DSA_THINGS/
-├── Exercises/          # General programming exercises
-│   ├── Bartlet/        # Bartlett curriculum problems
-│   ├── Ciscode/        # Ciscode code problems and solutions
-│   ├── CodeChum/       # CodeChum platform solutions
+├── Exercises/          # Exercises from teacher and different platforms
+│   ├── Bartlet/        # Sir Bartlett exercises
+│   ├── Ciscode/        # Ciscode problems and solutions
+│   ├── CodeChum/       # CodeChum exercises/activities solutions
 │   ├── LeetCode/       # LeetCode problem solutions
-├── Topics/             # Organized by computer science topics
+├── Topics/           
 │   ├── ArrayList/      # Array list implementations
 │   ├── Bit Vector/     # Bit vector data structure
 │   ├── Cursor-Based/   # Cursor-based implementations
