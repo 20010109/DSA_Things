@@ -14,16 +14,19 @@ DSA_THINGS/
 │   ├── Ciscode/        # Ciscode problems and solutions
 │   ├── CodeChum/       # CodeChum exercises/activities solutions
 │   ├── LeetCode/       # LeetCode problem solutions
+|   └── Tutorial        # DSA Tutorial activity solutions
 ├── Topics/           
 │   ├── ArrayList/      # Array list implementations
 │   ├── Bit Vector/     # Bit vector data structure
 │   ├── Cursor-Based/   # Cursor-based implementations
 │   ├── Dictionary/     # Dictionary hash table implementations
-│   ├── Linked List/    # Linked list variations
+|   ├── Graphs/         # Graphs implementations
 │   ├── LL Queues/      # Linked list based queues
 │   ├── LL Stack/       # Linked list based stacks
+│   ├── Linked List/    # Linked list variations
 │   ├── Priority Queue/ # Priority Queue implementation
 │   ├── Queue/          # Queue data structures
-│   └── Stack/          # Stack data structures
+│   ├── Stack/          # Stack data structures
+|   └── Trees/          # Binary Search Trees implementations
 └── README.md
 ```
