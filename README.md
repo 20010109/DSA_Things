@@ -1,4 +1,4 @@
-# DSA Implementation Repository
+### <img src='img/DSA REPO HEADER.png'>
 
 ## 🚀 Overview
 
