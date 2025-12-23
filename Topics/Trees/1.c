@@ -7,12 +7,29 @@ typedef struct Node{
     struct Node *rc;
 }Node, *BST;
 
+typedef struct Queue {
+    Node* data[100];
+    int front, rear;
+} Queue;
+
 void insert(BST *T, int value);
 void inorder(BST B);
 void preorder(BST B);
 void postorder(BST B);
 Node* delete(BST* T, int value);
 Node* findMin(BST T);
+
+// for DFS
+
+void dfs(BST T);
+
+// for BFS
+
+void initQueue(Queue* q);
+int isEmpty(Queue* q);
+void enqueue(Queue* q, Node* n);
+Node* dequeue(Queue* q);
+void bfs(BST T);
 
 
 int main(){
@@ -33,6 +50,12 @@ int main(){
     preorder(T);
     printf("\nPostorder.\n");
     postorder(T);
+
+    dfs(T);
+
+    printf("\nBFS (Level Order).\n");
+    bfs(T);
+
     
     return 0;
 }
@@ -130,6 +153,50 @@ void postorder(BST B){
     }
 }
 
+// for DFS
+
+void dfs(BST T){
+    printf("\nDFS (Inorder): \n");
+    inorder(T);
+}
+
+// for BFS
+
+void initQueue(Queue* q){
+    q->front = q->rear = 0;
+}
+
+int isEmpty(Queue* q){
+    return q->front == q->rear;
+}
+
+void enqueue(Queue* q, Node* n){
+    q->data[q->rear++] = n;
+}
+
+Node* dequeue(Queue* q){
+    return q->data[q->front++];
+}
+
+void bfs(BST T){
+    if(T == NULL) return;
+
+    Queue q;
+    initQueue(&q);
+
+    enqueue(&q, T);
+
+    while(!isEmpty(&q)){
+        Node* curr = dequeue(&q);
+        printf("%d ", curr->elem);
+
+        if(curr->lc != NULL)
+            enqueue(&q, curr->lc);
+
+        if(curr->rc != NULL)
+            enqueue(&q, curr->rc);
+    }
+}
 
 
 

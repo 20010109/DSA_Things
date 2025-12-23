@@ -16,17 +16,15 @@ DSA_THINGS/
 │   ├── LeetCode/       # LeetCode problem solutions
 |   └── Tutorial        # DSA Tutorial activity solutions
 ├── Topics/           
-│   ├── ArrayList/      # Array list implementations
-│   ├── Bit Vector/     # Bit vector data structure
-│   ├── Cursor-Based/   # Cursor-based implementations
+│   ├── Array List/      # Array list implementations
+│   ├── Bit Vector Set/     # Bit vector data structure
+│   ├── Cursor Based List/   # Cursor-based implementations
 │   ├── Dictionary/     # Dictionary hash table implementations
 |   ├── Graphs/         # Graphs implementations
-│   ├── LL Queues/      # Linked list based queues
-│   ├── LL Stack/       # Linked list based stacks
 │   ├── Linked List/    # Linked list variations
 │   ├── Priority Queue/ # Priority Queue implementation
-│   ├── Queue/          # Queue data structures
-│   ├── Stack/          # Stack data structures
+│   ├── Queue/          # Queue data structures (Array/Linked List)
+│   ├── Stack/          # Stack data structures (Array/Linked List)
 |   └── Trees/          # Binary Search Trees implementations
 └── README.md
 ```

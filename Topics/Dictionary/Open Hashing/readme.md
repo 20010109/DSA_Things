@@ -140,19 +140,3 @@ void searchKey(Dictionary D, int key){
 * Dynamic memory allocation
 * Linked list traversal and manipulation
 * Basic hash table operations (insert, delete, search, display)
-
-
-## 🧰 Compilation & Execution
-
-### Compile:
-```bash
-gcc main.c -o main
-```
-### Run:
-```bash
-./main
-```
-
-## ✨ Author
-### John Lorenz B. Codilla
-#### BS Information Technology — University of San Carlos

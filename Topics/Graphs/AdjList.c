@@ -32,6 +32,8 @@ void initQ(Queue *Q);
 void enqueue(Queue* Q, int value);
 void dequeue(Queue* Q);
 
+void freeGraph(Graph G);
+
 int main(){
     Graph G;
     int visited[MAX];
@@ -73,21 +75,26 @@ void dequeue(Queue* Q){
 }
 
 // UNFINISHED
-void bfs(Graph G, vertex V, int visited[], Queue *Q){
-    if(visited[V] == VISITED){
-        dequeue(Q);
-    }
+void bfs(Graph G, vertex V, int visited[], Queue *Q) {
+    initQ(Q);
     
     visited[V] = VISITED;
-    printf("%d ", V);
-    
     enqueue(Q, V);
     
-    ptr trav = G[]
-    
-    
-    
-    
+    while(Q->front < Q->rear) {
+        int current = Q->q[Q->front++];
+        printf("%d ", current);
+        
+        ptr trav = G[current];
+        while(trav != NULL) {
+            int neighbor = trav->elem;
+            if(visited[neighbor] == UNVISITED) {
+                visited[neighbor] = VISITED;
+                enqueue(Q, neighbor);
+            }
+            trav = trav->link;
+        }
+    }
 }
 
 
@@ -145,4 +152,16 @@ void display(Graph G){
         printf("NULL\n");
     }
     
+}
+
+
+void freeGraph(Graph G) {
+    for(int i = 0; i < MAX; i++) {
+        ptr current = G[i];
+        while(current != NULL) {
+            ptr temp = current;
+            current = current->link;
+            free(temp);
+        }
+    }
 }
